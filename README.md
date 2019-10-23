@@ -13,25 +13,25 @@ Some caveats about this server:
 ## Configuration
 Most configuration is by passing environment variables to the docker  container when it is run.  There are some build time options in the Dockerfile that you might want to look at changing depending on how your docker container is mounting filesystems.
 
-`JFUG_GITHUB_URL`
+`JUGA_GITHUB_URL`
 
 This is the repository for the git repo to be used.  JUGA uses the token method of accessing git repos, which is specific to github. 
 
-`JFUG_GITHUB_TOKEN`
+`JUGA_GITHUB_TOKEN`
 
 This is the token that your dedicated CI/CD user uses for accessing Github.  You can generate a token for this [here](https://github.com/settings/tokens), but remember that you should use a deployment user for this and _have a specific token for this server_.  
 
-`JFUG_RELEASES_PREFIX`
+`JUGA_RELEASES_PREFIX`
 
 This prefix is designed to specify what tags should be pulled down into the server.  The default value of this tag is `v`., because the server is normally designed to take semantically versioned releases of the form `v1.0.0` .  It also works with sequential release of the form `v1`.  Another common value for this is `release`.
 
-`JFUG_RELEASES_COUNT`
+`JUGA_RELEASES_COUNT`
 
 This is the number of releases to be available on the server, counting backwards from most recent.  The values are ordered according to semantic versioning, so `v1` is before `v2`, but `v2` is after `v1.1` irrespective of the dates that those versions were committed.
 
-The default value is `*`, which is to pull down all releases.  If the value given is `0`, no releases will be pulled down.  This is independent of the releases given in`JFUG_RELEASES_LIST` — specifying a release there does not affect the releases pulled down by this command.
+The default value is `*`, which is to pull down all releases.  If the value given is `0`, no releases will be pulled down.  This is independent of the releases given in`JUGA_RELEASES_LIST` — specifying a release there does not affect the releases pulled down by this command.
 
-`JFUG_RELEASES_LIST`
+`JUGA_RELEASES_LIST`
 
 This is a comma-separated list of releases to pull down.  This allows for any named tag to be pulled down, it also has the special value `HEAD` that will pull down the head of the repository.  Other common helpful values here are `master` and `develop`.
 
